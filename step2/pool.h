@@ -8,6 +8,9 @@ private:
 
     /*
     实现将 numOfPages页的连续内存 分为chunkSize大小的块，并添加到对应list中。
+    void* p：待分裂的连续内存
+    numOfPages：p有几页
+    chunkSize： 打算分成多大的块
     */
     void splitPages(void* p,int numOfPages,int chunkSize);
 
@@ -28,7 +31,9 @@ public:
     void init();
 
     /*
-    return list[size2slot(size)].pop();
+    void* pChunk=list[size2slot(size)].pop()
+    void* userPointer=pChunk+sizeof((void*))*2+sizeof(long long)
+    return userPointer;
     */
     void* distributeChunk(int size);
     
